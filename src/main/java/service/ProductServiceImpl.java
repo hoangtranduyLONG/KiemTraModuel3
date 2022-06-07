@@ -147,16 +147,16 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findAllByCategory(int categoryId) {
         List<Product> productList = new ArrayList<>();
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("select * from product where categoryId = ?");) {
+             PreparedStatement preparedStatement = connection.prepareStatement("select * from product where category = ?");) {
             preparedStatement.setInt(1, categoryId);
-            System.out.println(preparedStatement);
+//            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String name = rs.getString("productName");
+                String name = rs.getString("name");
                 double price = rs.getDouble("price");
                 int quantity = rs.getInt("quantity");
-                int categoriesId = rs.getInt("categoryId");
+                int categoriesId = rs.getInt("category");
                 String description = rs.getString("description");
                 String color = rs.getString("color");
                 Category category = categoryService.findById(categoriesId);
@@ -178,16 +178,16 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findAllByNameContains(String findName) {
         List<Product> productList = new ArrayList<>();
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("select * from product where productName like ?");) {
+             PreparedStatement preparedStatement = connection.prepareStatement("select * from product where name like ?");) {
             preparedStatement.setString(1, "%" + findName + "%");
-            System.out.println(preparedStatement);
+//            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String name = rs.getString("productName");
+                String name = rs.getString("name");
                 double price = rs.getDouble("price");
                 int quantity = rs.getInt("quantity");
-                int categoryId = rs.getInt("categoryId");
+                int categoryId = rs.getInt("category");
                 String description = rs.getString("description");
                 String color = rs.getString("color");
                 Category category = categoryService.findById(categoryId);

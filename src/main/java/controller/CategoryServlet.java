@@ -40,7 +40,6 @@ public class CategoryServlet extends HttpServlet {
         request.setAttribute("ds", categories);
         requestDispatcher.forward(request, response);
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -49,13 +48,8 @@ public class CategoryServlet extends HttpServlet {
         if (act == null) {
             act = "";
         }
-
         switch (act) {
-
-
         }
     }
-
-
 }
 

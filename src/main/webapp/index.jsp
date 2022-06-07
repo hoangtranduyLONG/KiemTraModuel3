@@ -56,10 +56,15 @@
               <a class="nav-link disabled">Disabled</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0" action="/home">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="findName">
+
+<%--            SEARCH--%>
+
+          <form class="form-inline my-2 my-lg-0"  action="/home">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="findName">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
+
+
         </div>
       </nav>
     </div>
@@ -111,10 +116,11 @@
                 <a class="btn btn-secondary" href="/products?act=update&id=${pr.id}">Update</a>
               </form>
 
-              <form action = "/products" method="post" id="delete${pr.id}" style="display: inline">
+              <form action = "/products?act=delete&id=${pr.id}" method="post" name="${pr.id}" style="display: inline">
                 <input type="hidden" name="act" value="delete">
                 <input type="hidden" name="id" value="${pr.id}">
-                <a class="btn btn-danger" onclick="xacNhanDelete(${pr.id})">Delete</a>
+                  <button class="btn btn-danger">Delete</button>
+<%--                <a class="btn btn-danger" href="/products?act=delete&id=${pr.id}" value="${pr.id}">Delete</a>--%>
               </form>
             </td>
           </tr>
